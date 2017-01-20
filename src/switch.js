@@ -1,15 +1,14 @@
 import isUndefined from 'lodash/isUndefined';
 import isPlainObject from 'lodash/isPlainObject';
+import isFunction from 'lodash/isFunction';
 
 
 function safe(switchTree, branch, nextBranch, ...branches) {
     let res = switchTree[branch];
 
-    if (isUndefined(res)) {
-        if (isUndefined(switchTree.default)) {
-            return 'throw exception';
-        }
-
+    if (isUndefined(res) && isUndefined(switchTree.default)) {
+        return 'throw exception';
+    } else if (isUndefined(res) && !isUndefined(switchTree.default)) {
         return safe(switchTree, 'default', nextBranch, ...branches);
     } else if (!isUndefined(nextBranch)) {
         return safe(res, nextBranch, ...branches);
@@ -19,17 +18,15 @@ function safe(switchTree, branch, nextBranch, ...branches) {
         return 'throw exception';
     }
 
-    return res;
+    return returnLeaf(res);
 }
 
 function unsafe(switchTree, branch, nextBranch, ...branches) {
     let res = switchTree[branch];
 
-    if (isUndefined(res)) {
-        if (isUndefined(switchTree.default)) {
-            return switchTree;
-        }
-
+    if (isUndefined(res) && isUndefined(switchTree.default)) {
+        return returnLeaf(switchTree);
+    } else if (isUndefined(res) && !isUndefined(switchTree.default)) {
         return unsafe(switchTree, 'default', nextBranch, ...branches);
     } else if (!isUndefined(nextBranch)) {
         return unsafe(res, nextBranch, ...branches);
@@ -39,6 +36,13 @@ function unsafe(switchTree, branch, nextBranch, ...branches) {
         return res;
     }
 
+    return returnLeaf(res);
+}
+
+function returnLeaf(res) {
+    if (isFunction(res)) {
+        return res();
+    }
     return res;
 }
 

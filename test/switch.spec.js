@@ -19,7 +19,7 @@ const unsafe = Switch.unsafe;
 //}
 
 const switch1 = {};
-switch1['case1'] = 'case1';
+switch1['case1'] = () => 'case1';
 switch1['case2'] = 'case2';
 switch1['case3'] = 'case3 and case4';
 switch1['case4'] = 'case3 and case4';
@@ -53,7 +53,7 @@ switchShortcut['path2']['pathb'] = 'path2b';
 
 // The only difference between safe and unsafe is how it is handle the error.
 // with safe it is an explicit error
-// with unsafe, it returns the last switchTree/value found
+// with unsafe, it returns the last switchTree/value found (the text is of test of unsafe are wrong)
 
 describe('Switch', () => {
 
