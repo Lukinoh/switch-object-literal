@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Lukinos/switch-object-literal.git"
+    "url": "https://github.com/Lukinoh/switch-object-literal.git"
   },
   "keywords": [
     "object-literal",
@@ -27,12 +27,12 @@
     "switch-object-literal"
   ],
   "author": {
-    "name": "Lukinos",
-    "url": "https://github.com/Lukinos"
+    "name": "Lukinoh",
+    "url": "https://github.com/Lukinoh"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Lukinos/switch-object-literal/issues"
+    "url": "https://github.com/Lukinoh/switch-object-literal/issues"
   },
   "files": [
     "LICENSE",
@@ -41,7 +41,7 @@
     "lib",
     "dist"
   ],
-  "homepage": "https://github.com/Lukinos/switch-object-literal",
+  "homepage": "https://github.com/Lukinoh/switch-object-literal",
   "devDependencies": {
     "babel": "6.3.26",
     "babel-core": "6.4.0",
